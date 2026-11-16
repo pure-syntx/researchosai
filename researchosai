@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Research Lab Portal & Infrastructure Ledger</title>
+    <!-- Tailwind CSS Engine for Clean Visual Styles -->
+    <script src="https://tailwindcss.com"></script>
+    <style>
+        html { scroll-behavior: smooth; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .tab-btn.active { border-color: #2563eb; color: #2563eb; background-color: #f8fafc; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans tracking-tight antialiased">
+
+    <!-- 🌟 NAVBAR & SYSTEM HEADER IDENTITY -->
+    <nav class="bg-blue-900 text-white shadow-md sticky top-0 z-50 border-b border-blue-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
+            <div class="flex items-center space-x-2">
+                <span class="text-xl">🔬</span>
+                <span class="font-bold text-base md:text-lg tracking-wide">IACMS Lab Portal</span>
+            </div>
+            <div class="hidden md:flex space-x-1 text-sm font-semibold">
+                <button onclick="switchTab('tab-home')" class="tab-btn active px-3 py-2 rounded-md hover:text-blue-200 transition">🏠 Identity</button>
+                <button onclick="switchTab('tab-research')" class="tab-btn px-3 py-2 rounded-md hover:text-blue-200 transition">🔬 Research</button>
+                <button onclick="switchTab('tab-pubs')" class="tab-btn px-3 py-2 rounded-md hover:text-blue-200 transition">📚 Open Science</button>
+                <button onclick="switchTab('tab-team')" class="tab-btn px-3 py-2 rounded-md hover:text-blue-200 transition">👥 Team Ledger</button>
+                <button onclick="switchTab('tab-facilities')" class="tab-btn px-3 py-2 rounded-md hover:text-blue-200 transition">🏢 Facilities</button>
+                <button onclick="switchTab('tab-news')" class="tab-btn px-3 py-2 rounded-md hover:text-blue-200 transition">📢 News</button>
+                <button onclick="switchTab('tab-join')" class="tab-btn ml-2 bg-emerald-600 px-3 py-2 rounded-md text-white hover:bg-emerald-500 transition shadow-sm">🤝 Join Us</button>
+            </div>
+            <!-- Mobile Menu Indicator Toggle -->
+            <div class="md:hidden text-xs font-bold bg-blue-950 px-2.5 py-1.5 rounded uppercase tracking-wider text-blue-300">Unified Stack</div>
+        </div>
+    </nav>
+
+    <!-- 📢 LIVE ALERT BREAKTHROUGH SEGMENT -->
+    <div class="bg-amber-50 border-b border-amber-200 text-amber-900 px-4 py-3 text-center text-xs font-semibold shadow-sm">
+        🚀 <span class="uppercase font-bold tracking-wider text-amber-700 mr-2">Latest Breakthrough Alert:</span> Successfully mapped 3D folding structures of polymorphic synthetic proteins using 128-qubit quantum optimization layers.
+    </div>
+
+    <!-- 🏛️ HERO OVERVIEW PANEL -->
+    <header class="bg-gradient-to-r from-blue-950 to-slate-900 text-white py-12 lg:py-16 px-4 border-b border-slate-800">
+        <div class="max-w-5xl mx-auto text-center">
+            <span class="bg-blue-800 text-blue-200 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-blue-700/50">Institutional Affiliation Network Node</span>
+            <h1 class="text-3xl md:text-5xl font-extrabold mt-3 mb-4 tracking-tight leading-none text-white">Institute of Advanced Computing & Molecular Sciences</h1>
+            <p class="text-slate-400 max-w-2xl mx-auto text-xs md:text-sm font-medium">Department of Bio-Systems Engineering Core Portal Interface.</p>
+        </div>
+    </header>
+
+    <!-- 📊 CORE AGGREGATION METRICS GRID -->
+    <div class="max-w-7xl mx-auto px-4 -mt-6 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 bg-white p-4 rounded-xl shadow-md border border-slate-200/80 text-center">
+            <div class="p-2 border-r border-slate-100 last:border-0"><p class="text-xl md:text-2xl font-bold text-blue-900">2 Active</p><p class="text-[11px] font-medium text-slate-500 uppercase tracking-wider mt-0.5">High-Tier Grants</p></div>
+            <div class="p-2 md:border-r border-slate-100 last:border-0"><p class="text-xl md:text-2xl font-bold text-blue-900">4 Indexed</p><p class="text-[11px] font-medium text-slate-500 uppercase tracking-wider mt-0.5">Published Outputs</p></div>
+            <div class="p-2 border-r border-slate-100 last:border-0"><p class="text-xl md:text-2xl font-bold text-blue-900">4 Active</p><p class="text-[11px] font-medium text-slate-500 uppercase tracking-wider mt-0.5">Lab Personnel</p></div>
+            <div class="p-2 last:border-0"><p class="text-xl md:text-2xl font-bold text-blue-900">2 Core</p><p class="text-[11px] font-medium text-slate-500 uppercase tracking-wider mt-0.5">Physical Facilities</p></div>
+        </div>
+    </div>
+
+    <!-- ⚙️ DATA INTERACTION WEB DESK -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        <!-- ==================== TAB NODE 1: IDENTITY ==================== -->
+        <div id="tab-home" class="tab-content active space-y-8">
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm border-l-4 border-blue-600">
+                    <h3 class="text-lg font-bold text-blue-900 mb-2 flex items-center"><span>🌟</span> <span class="ml-2">Strategic Lab Core Mission Statement</span></h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Advancing the frontiers of scientific discovery through interdisciplinary data-driven methodologies and completely open science frameworks.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm border-l-4 border-emerald-500">
+                    <h3 class="text-lg font-bold text-emerald-900 mb-2 flex items-center"><span>🎯</span> <span class="ml-2">Primary Core Research Focus & Domains</span></h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">Quantum Machine Learning Systems, Computational Bio-Engineering, and High-Performance Distributed Computing Fabrics.</p>
+                </div>
+            </div>
+            <div class="bg-slate-900 text-white p-6 rounded-xl shadow-inner border border-slate-800">
+                <h4 class="text-sm font-bold uppercase tracking-wider text-amber-400 mb-2">🏆 System Historical Milestones & Track Records</h4>
+                <p class="text-xs text-slate-300 leading-relaxed">Our research structures process automated matrix algorithms deployed globally. The core team actively maintains three cross-institutional open science repositories processing over 12.4M automated pipeline transactions quarterly.</p>
+            </div>
+        </div>
+
+        <!-- ==================== TAB NODE 2: PORTFOLIO ==================== -->
+        <div id="tab-research" class="tab-content space-y-6">
+            <div class="border-b border-slate-200 pb-3"><h3 class="text-xl font-bold text-slate-900">🔬 Academic Research Portfolios & Financing Assets</h3></div>
+            <div class="grid gap-4" id="render-projects"></div>
+        </div>
+
+        <!-- ==================== TAB NODE 3: PUBLICATIONS ==================== -->
+        <div id="tab-pubs" class="tab-content space-y-6">
+            <div class="border-b border-slate-200 pb-3 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
+                <h3 class="text-xl font-bold text-slate-900">📚 Peer-Reviewed Publications & Open Science Matrix</h3>
+                <select id="pub-filter" onchange="filterPublications()" class="border border-slate-300 rounded p-1.5 text-xs font-semibold focus:ring-1 focus:ring-blue-500 outline-none bg-white">
+                    <option value="ALL">Show All Outputs</option>
+                    <option value="Peer-Reviewed Journal">Peer-Reviewed Journal</option>
+                    <option value="Conference Proceeding">Conference Proceeding</option>
+                    <option value="Book Chapter">Book Chapter</option>
+                    <option value="Patent & IP Asset">Patent & IP Asset</option>
+                </select>
+            </div>
+            <div class="grid gap-4" id="render-pubs"></div>
+        </div>
+
+        <!-- ==================== TAB NODE 4: TEAM LEDGER ==================== -->
+        <div id="tab-team" class="tab-content space-y-6">
+            <div class="border-b border-slate-200 pb-3"><h3 class="text-xl font-bold text-slate-900">👥 Laboratory Academic Infrastructure & Alumni Historical Record</h3></div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4" id="render-team"></div>
+        </div>
+
+        <!-- ==================== TAB NODE 5: FACILITIES ==================== -->
+        <div id="tab-facilities" class="tab-content space-y-6">
+            <div class="border-b border-slate-200 pb-3"><h3 class="text-xl font-bold text-slate-900">🏢 Laboratory Physical Infrastructure & Capital Instruments</h3></div>
+            <div class="grid md:grid-cols-2 gap-4" id="render-facilities"></div>
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-xs text-amber-900 leading-relaxed shadow-sm">
+                ⚠️ <strong class="uppercase text-amber-800">External Resource Access Mandate:</strong> Outside institutional research alliances, peer academic labs, or enterprise technical developers requesting hardware execution slots to utilize our physical infrastructure must process a formal Resource Run Request through the automated intake module within the <strong>"Join Us"</strong> portal.
+            </div>
+        </div>
+
+        <!-- ==================== TAB NODE 6: NEWS & PUBLIC CALENDAR ==================== -->
+        <div id="tab-news" class="tab-content space-y-6">
+
+
