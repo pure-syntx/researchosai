@@ -1,0 +1,123 @@
+import streamlit as st
+import pandas as pd
+import datetime
+
+# ==========================================
+# 1. CORE WEB SYSTEM CONFIGURATION
+# ==========================================
+st.set_page_config(
+    page_title="Advanced Research Lab Portal & Infrastructure Ledger",
+    page_icon="🔬",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# --- SYSTEM SCANNABILITY STYLE SHEET ---
+st.markdown("""
+    <style>
+    .main-header { font-size:2.5rem !important; font-weight: 700; color: #1E3A8A; margin-bottom: 0.5rem; }
+    .sub-header { font-size:1.6rem !important; font-weight: 600; color: #2563EB; margin-top: 1.8rem; margin-bottom: 1rem; border-bottom: 2px solid #E2E8F0; padding-bottom: 0.3rem; }
+    .card { padding: 1.5rem; border-radius: 0.5rem; background-color: #F8FAFC; border: 1px solid #E2E8F0; margin-bottom: 1rem; }
+    .highlight { font-weight: 600; color: #0F172A; }
+    .status-badge { padding: 0.25rem 0.6rem; border-radius: 0.25rem; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; float: right; }
+    .status-active { background-color: #DCFCE7; color: #15803D; }
+    .status-completed { background-color: #DBEAFE; color: #1D4ED8; }
+    </style>
+""", unsafe_allow_html=True)
+
+
+# ==========================================
+# 2. INTERNAL MEMORY STORAGE (DATA LAYERS)
+# ==========================================
+@st.cache_data
+def get_comprehensive_lab_dataset():
+    return {
+        "identity": {
+            "mission": "Advancing the frontiers of scientific discovery through interdisciplinary data-driven methodologies and completely open science frameworks.",
+            "focus": "Quantum Machine Learning Systems, Computational Bio-Engineering, and High-Performance Distributed Computing Fabrics.",
+            "affiliation": "Institute of Advanced Computing & Molecular Sciences (IACMS) / Dept. of Bio-Systems Engineering",
+            "breakthrough": "Successfully mapped the 3D folding structures of polymorphic synthetic proteins using a novel 128-qubit quantum optimization loop (Published June 2026)."
+        },
+        "projects": [
+            {"id": "PROJ-01", "name": "Project BioFold-Quantum Core", "status": "Active", "focus": "Quantum Computing & Advanced Biotech", "timeline": "2025 - 2028", "funding": "National Science Foundation (NSF) - Grant #NSF-2026-9912", "impact": "Accelerates target structural drug discovery timelines from 18 months down to 4.5 operational hours."},
+            {"id": "PROJ-02", "name": "Project NeuroLink-Mesh Architectures", "status": "Active", "focus": "Edge Artificial Intelligence Infrastructure", "timeline": "2024 - 2027", "funding": "European Horizon Europe - Framework 9 Portfolio", "impact": "Enables ultra-low latency mesh networking arrays for real-time critical prosthetic neurological feedback loops."},
+            {"id": "PROJ-03", "name": "Project TeraStorage Distribution v1", "status": "Completed", "focus": "Distributed Open-Source Memory Systems", "timeline": "2022 - 2025", "funding": "Tech-Corp Global Corporate Foundational Research Grant", "impact": "Adopted universally by 3 tier-1 global data centers, reducing cold storage structural power drain metrics by 42%."
+        }],
+        "publications": [
+            {"year": 2026, "type": "Peer-Reviewed Journal", "citation": "Chen, L., Müller, A., & Smith, J. (2026). Quantum Molecular Optimization Layers for Protein Synthesis. Nature Computational Science, 6(3), 214-228.", "doi": "https://doi.org", "assets": ["PDF Paper", "GitHub Source Code", "Zenodo Raw Dataset"]},
+            {"year": 2025, "type": "Conference Proceeding", "citation": "Müller, A. (2025). Decentralized Edge Mesh Optimization on Resource-Constrained Micro-Architectures. In Proceedings of the IEEE International Conference on Distributed Systems (ICDS 2025), pp. 45-56.", "doi": "https://doi.org", "assets": ["Presentation Slides Bundle", "GitHub Source Code"]},
+            {"year": 2024, "type": "Book Chapter", "citation": "Smith, J., & Patel, R. (2024). Foundational Principles of Scalable Microfluidic Control Layouts. In Academic Press (Ed.), Advanced Bio-Computation Paradigms (pp. 89-122).", "doi": "https://doi.org", "assets": ["Publisher Link"]},
+            {"year": 2024, "type": "Patent & IP Asset", "citation": "US Patent 11,942,105: Scalable Matrix Multiplier Array Layout for Cryogenic Quantum Control Units. Filed Jan 2024, Issued Nov 2025.", "doi": "https://google.com", "assets": ["US Patent Office Official Manifest"]}
+        ],
+        "team": [
+            {"role": "Principal Investigator (PI)", "name": "Dr. Jonathan Smith, PhD", "details": "Full Professor of Computer Engineering & Molecular Biology. Former Research Fellow at MIT Computer Science & AI Lab (CSAIL). 150+ peer-reviewed assets indexed.", "focus": "Systems Architecture & Quantum Bio-Computing Networks", "email": "j.smith@iacms-institute.edu"},
+            {"role": "Researcher / Postdoc", "name": "Dr. Anika Müller, PhD", "details": "Lead Field Researcher for the NeuroLink program. Earned PhD from ETH Zürich in Distributed Micro-Architectures & Edge Fabrics.", "focus": "Edge Sensor Network Frameworks & Low-Power Kernels", "email": "a.mueller@iacms-institute.edu"},
+            {"role": "PhD / Graduate Student", "name": "Lin Chen", "details": "NSF Graduate Research Fellow. Current Doctor of Philosophy Candidate. Thesis tract focus: 'Quantum-Inspired Heuristics for Polypeptide Sequencing'.", "focus": "Quantum Optimization Loops & Combinatorial Math", "email": "l.chen@sub.iacms-institute.edu"},
+            {"role": "Alumni Member", "name": "Dr. Rahul Patel, PhD", "details": "Graduated Session 2025. Developed baseline thesis on microfluidic control arrays. Currently placed as Senior Quantum Scientist at Intel Corporation Laboratory Operations.", "focus": "Industrial Silicon Integration Systems", "email": "r.patel@intel.com"}
+        ],
+        "facilities": [
+            {"item": "Quantum Simulation Engine Cluster (Q-Sim v2)", "specs": "1,024-node heterogeneous compute framework with hardware-accelerated tensor slice layers running custom cryogenic emulator logic maps.", "use": "Simulating deep quantum noise environments and protein state thermodynamic dynamics over long timelines."},
+            {"item": "Class-100 Cleanroom & Microfluidic Fabrication Unit", "specs": "Complete photolithography array, thin-film chemical deposition tools, and automated machine-vision sub-micron alignment verification metrics.", "use": "Prototyping physical bio-sensor structural nodes and micro-mesh silicon array modules."}
+        ],
+        "news": [
+            {"date": "2026-07-15", "type": "Press Release", "title": "Lab Group Formally Awarded Environmental Tech Innovation Prize for Low-Power Distributed Cold-Storage Designs.", "link": "https://institute.edu"},
+            {"date": "2026-09-12", "type": "Seminar Calendar", "title": "Upcoming Institutional Lab Workshop: Implementing Open-Source High-Dimensional Quantum Kernels via Python Arrays.", "link": "https://institute.edu"}
+        ],
+        "careers": [
+            {"title": "Postdoctoral Researcher - Quantum Optimization Algorithms & Logic Labs", "type": "Full-Time Faculty Role", "duration": "24 Months Fixed-Term Contract", "requirements": "PhD in Physics, Computer Science, or Applied Mathematics. Proven background developing with Qiskit or Pennylane API layers.", "deadline": "September 30, 2026"},
+            {"title": "Graduate Assistantship (PhD Track) - Advanced Bio-Sensor Physical Interfacing Platforms", "type": "Fully Funded Academic Placement", "duration": "48 Months Complete Tuition & Stipend Package", "requirements": "MSc or highly exceptional BSc tracking in Electrical or Biological Engineering. Direct experience with FPGA hardware prototyping pipelines preferred.", "deadline": "October 15, 2026"}
+        ]
+    }
+
+db = get_comprehensive_lab_dataset()
+
+# ==========================================
+# 3. GLOBAL UI COMPONENTS (SIDEBAR & FOOTER)
+# ==========================================
+st.sidebar.markdown("<h2 style='text-align: center; color: #1E3A8A;'>🔬 IACMS Portal</h2>", unsafe_allow_html=True)
+st.sidebar.markdown("<p style='text-align: center; font-size: 0.85rem; color: #64748B;'>All-In-One Unified Academic System Management Engine</p>", unsafe_allow_html=True)
+st.sidebar.markdown("---")
+
+app_mode = st.sidebar.radio(
+    "Select System Website Module Component:",
+    [
+        "🏠 Identity & Landing Page",
+        "🔬 Portfolio & Active Research",
+        "📚 Publications & Open-Science",
+        "👥 Academic Team & Alumni Ledger",
+        "🏢 Facilities & Lab Infrastructure",
+        "📢 Press Releases & Events Calendar",
+        "🤝 Careers, Open Roles & Action Portal"
+    ]
+)
+
+def render_system_footer():
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    st.markdown("---")
+    foot_col1, foot_col2, foot_col3 = st.columns(3)
+    with foot_col1:
+        st.markdown("""
+        **📍 Verified Physical Contact**
+        * Building 42, Engineering Quad
+        * Institute of Advanced Computing & Molecular Sciences
+        * **Admin Email:** `research-admin@iacms-institute.edu`
+        * **Operational Line:** +1 (555) 019-2834
+        """)
+    with foot_col2:
+        st.markdown("""
+        **🌐 Global Intellectual Networks**
+        * 🖥️ [Google Scholar Institutional Portal](#)
+        * 📑 [ResearchGate Verified Lab Profile](#)
+        * 💻 [GitHub Shared Core Organization](#)
+        * 👔 [LinkedIn Academic Network Node](#)
+        """)
+    with foot_col3:
+        st.markdown("""
+        **🔐 System Trust, Compliance & Legal Ledger**
+        * • [Privacy Policy & Cookie Processing Layouts](#)
+        * • [Terms of Distributed Infrastructure Consumption](#)
+        """)
+
+
+
+
